@@ -14,7 +14,7 @@ const s3 = new S3({
 const s3ImgUpload = multer({
   storage: multerS3({
     s3,
-    bucket: 'oj-upload-test',
+    bucket: process.env.AWS_S3_BUCKET_NAME || '',
     metadata: (req, file, cb) => {
       cb(null, {
         fieldName: file.fieldname,
